@@ -1,5 +1,10 @@
 # Test Drupal
 
+## Travail effectué
+Création d'un custom module (test_drupal), du fichier test_drupal.theme et du template related-events-block.html.twig par répondre aux besoins du test.
+J'ai rajouté le module test_drupal au niveau du fichier core.extension.yml. Après pull, activer le module test_drupal en exéctutant la commande drush cim -y. Je n'ai pas eu besoin d'exporter de configs, l'affichage du bloc related events est géré dans le code du module.
+Temps passé : 4h40 (21h - 1h40)
+
 ## Description de l'existant
 Le site est déjà installé (profile standard), la db est à la racine du projet.
 Un **type de contenu** `Événement` a été créé et des contenus générés avec Devel. Il y a également une **taxonomie** `Type d'événement` avec des termes.
