@@ -1,0 +1,10 @@
+services:
+  test_drupal.event_service:
+    class: Drupal\test_drupal\Service\EventService
+    arguments: ['@entity_type.manager', '@date.formatter']
+    tags:
+      - { name: 'event_block_service' }
+  test_drupal.event_unpublish_queue:
+    class: Drupal\test_drupal\Plugin\QueueWorker\EventUnpublishQueueWorker
+    tags:
+      - { name: queue_worker, id: event_unpublish_queue }

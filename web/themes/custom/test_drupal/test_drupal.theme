@@ -1,0 +1,23 @@
+<?php
+
+  /**
+   * Implements hook_preprocess_node().
+   */
+  function test_drupal_preprocess_node(&$variables) {
+    // Check if the node type is "event".
+    if ($variables['node']->getType() === 'event') {
+      // Load the custom block plugin.
+      $blockPlugin = \Drupal::service('plugin.manager.block')
+        ->createInstance('related_events_block');
+
+      // Build the block.
+      $blockBuild = $blockPlugin->build();
+
+      // Render the block.
+      $blockRenderArray = \Drupal::service('renderer')
+        ->renderRoot($blockBuild);
+
+      // Add the rendered block to the node template variables.
+      $variables['related_events_block'] = $blockRenderArray;
+    }
+  }

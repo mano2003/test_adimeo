@@ -1,0 +1,35 @@
+<?php
+
+  /**
+   * Implements hook_cron().
+   */
+  function event_unpublish_cron() {
+    // Initialize the queue worker to unpublish events.
+    \Drupal::service('plugin.manager.queue_worker')
+      ->createInstance('event_unpublish_queue')
+      ->processQueue();
+  }
+
+  /**
+   * Implements hook_cron_queue_info().
+   */
+  function event_unpublish_cron_queue_info() {
+    $queues['event_unpublish_queue'] = [
+      'title' => 'Event Unpublish Queue',
+      'description' => 'Queue for processing event unpublishing.',
+      'worker callback' => 'event_unpublish_queue_worker_callback',
+      'cron' => '0 0 * * *', // Runs every day at 12AM
+    ];
+
+    return $queues;
+  }
+
+
+  /**
+   * Cron queue worker callback.
+   */
+  function event_unpublish_queue_worker_callback($data) {
+    $queue_worker_manager = \Drupal::service('plugin.manager.queue_worker');
+    $queue = $queue_worker_manager->createInstance('event_unpublish_queue');
+    $queue->processItem($data);
+  }

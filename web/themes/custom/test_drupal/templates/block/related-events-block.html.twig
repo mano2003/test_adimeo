@@ -1,0 +1,9 @@
+{% if related_events %}
+  <div class="block-result-items">
+    {% for event in related_events %}
+      {{ event.title }}
+      {{ event.start_date|date('d/m/Y') }}
+      {{ event.end_date|date('d/m/Y') }}
+    {% endfor %}
+  </div>
+{% endif %}

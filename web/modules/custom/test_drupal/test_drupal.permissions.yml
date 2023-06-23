@@ -1,0 +1,4 @@
+administer test_drupal configuration:
+  title: 'Administer test_drupal configuration'
+  description: 'Optional description.'
+  restrict access: true

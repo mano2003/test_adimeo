@@ -1,0 +1,11 @@
+name: Test Drupal
+type: module
+description: Provides a custom block to display related events and a cron queue worker that unpublish past events.
+package: Custom
+core_version_requirement: ^9 || ^10
+
+# Translations
+language:
+  - fr
+interface_translation_project: test_drupal
+interface_translation_server_pattern: modules/custom/test_drupal/translations/test_drupal.fr.po

@@ -1,0 +1,8 @@
+test_drupal.example:
+  path: '/test-drupal/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\test_drupal\Controller\TestDrupalController::build'
+  requirements:
+    _permission: 'access content'
+

@@ -1,0 +1,28 @@
+{% if related_events %}
+  <h2 class="block__title">{{ 'Related events'|t }}</h2>
+  <div class="block-result-items">
+    <ul>
+      {% for event in related_events %}
+        <li>
+          <h3>{{ event.title }}</h3>
+          <div class="field field--name-field-event-type field--type-entity-reference field--label-inline">
+            <div class="field__label">{{ 'Event type'|t }}</div>
+            <div class="field__item">{{ event.event_type }}</div>
+          </div>
+          <div class="field field--name-field-date-range field--type-daterange field--label-inline">
+            <div class="field__label">{{ 'Start date'|t }}</div>
+            <div class="field__item">
+              <time datetime="{{ event.start_date }}">{{ event.start_date|date('U')|format_date('long') }}</time>
+            </div>
+          </div>
+          <div class="field field--name-field-date-range field--type-daterange field--label-inline">
+            <div class="field__label">{{ 'End date'|t }}</div>
+            <div class="field__item">
+              <time datetime="{{ event.end_date }}">{{ event.end_date|date('U')|format_date('long') }}</time>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
